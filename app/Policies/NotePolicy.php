@@ -37,7 +37,7 @@ class NotePolicy
      */
     public function update(User $user, Note $note): bool
     {
-        //
+        return $user->id === $note->user_id;
     }
 
     /**
@@ -45,7 +45,7 @@ class NotePolicy
      */
     public function delete(User $user, Note $note): bool
     {
-        return false;
+        return $user->id === $note->user_id;
     }
 
     /**

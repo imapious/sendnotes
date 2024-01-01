@@ -31,7 +31,7 @@ new class extends Component {
             <p class="text-sm">Let's create your first note to send.</p>
             <x-button primary icont-right="plus" class="mt-6" href="{{ route('notes.create') }}" wire:navigate>Create Note</x-button>
         </div>
-        @else
+    @else
         <x-button primary icont-right="plus" class="mt-6 mb-6" href="{{ route('notes.create') }}" wire:navigate>Create Note</x-button>
 
         <div class="grid grid-cols-2 gap-4 mt-12">
@@ -39,9 +39,8 @@ new class extends Component {
                 <x-card wire:key='{{ $note->id }}'>
                     <div class="flex justify-between">
                         <div>
-                            <a href="#" class="text-xl font-bold hover:underline hover:text-blue-500">{{ $note->title }}</a>
+                            <a href="{{ route('notes.edit', $note) }}" wire:navigate class="text-xl font-bold hover:underline hover:text-blue-500">{{ $note->title }}</a>
                             <p class="mt-2 text-xs">{{ Str::limit($note->body, 50) }}</p>
-
                         </div>
 
                         <div class="text-xs text-gray-500">{{ \Carbon\Carbon::parse($note->send_date)->format('M-d-Y') }}</div>
